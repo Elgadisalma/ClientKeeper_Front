@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ✅ Import CommonModule pour ngClass
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-navbar',
-  standalone: true, // ✅ Si tu veux garder standalone
-  imports: [CommonModule], // ✅ Ajoute CommonModule ici
+  standalone: true, 
+  imports: [CommonModule], 
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
