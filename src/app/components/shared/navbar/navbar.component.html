@@ -14,12 +14,12 @@
 
 
     <div class="hidden md:flex space-x-10">
-      <a href="#" class="nav-link"><i class="fas fa-home w-10"></i> Home</a>
+      <a href="/welcome" class="nav-link"><i class="fas fa-home w-10"></i> Home</a>
       <a href="#" class="nav-link"
         ><i class="fas w-9 fa-info-circle"></i> About Us</a
       >
-      <a href="#" class="nav-link"><i class="fas w-9 fa-user-plus"></i> Register</a>
-      <a href="#" class="nav-link"><i class="fas w-9 fa-sign-in-alt"></i> Login</a>
+      <a href="/register" class="nav-link"><i class="fas w-9 fa-user-plus"></i> Register</a>
+      <a href="/login" class="nav-link"><i class="fas w-9 fa-sign-in-alt"></i> Login</a>
     </div>
   </div>
 
@@ -28,9 +28,19 @@
     [ngClass]="{ hidden: !isMenuOpen }"
     class="flex flex-col space-y-4 px-10 py-4 bg-gray-200 md:hidden"
   >
-    <a href="#" class="nav-link"><i class="fas w-9 fa-home"></i> Home</a>
+    <a href="/welcome" class="nav-link"><i class="fas w-9 fa-home"></i> Home</a>
     <a href="#" class="nav-link"><i class="fas w-9 fa-info-circle"></i> About Us</a>
-    <a href="#" class="nav-link"><i class="fas w-9 fa-user-plus"></i> Register</a>
-    <a href="#" class="nav-link"><i class="fas w-9 fa-sign-in-alt"></i> Login</a>
+    <a href="/register" class="nav-link"><i class="fas w-9 fa-user-plus"></i> Register</a>
+    <a href="/login" class="nav-link"><i class="fas w-9 fa-sign-in-alt"></i> Login</a>
   </div>
 </nav>
+
+
+<div class="marquee-container  text-center overflow-hidden relative">
+  <div class="marquee-content">
+    <ng-container *ngFor="let quote of quotes">
+      <span class="marquee-item">{{quote}}</span>
+    </ng-container>
+  </div>
+</div>
+

@@ -16,26 +16,21 @@ import { LandingPageComponent } from './components/guests/landing-page/landing-p
 const routes: Routes = [
   { path: 'welcome', component: LandingPageComponent },
 
-  // Authentification (Connexion et Inscription)
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  // Dashboard Admin
   { path: 'admin-dashboard', component: AdminDashboardComponent },
 
-  // Gestion des clients
   { path: 'clients', component: ClientListComponent },
-  { path: 'clients/approuves', component: ClientApprouveComponent }, // Pour les clients approuvés
-  { path: 'clients/:id', component: ClientListComponent }, // Pour afficher un client spécifique, en utilisant un paramètre dynamique
+  { path: 'clients/approuves', component: ClientApprouveComponent },
+  { path: 'clients/:id', component: ClientListComponent }, 
 
-  // Gestion des offres
   { path: 'offres', component: OffreListComponent },
   { path: 'offres/create', component: OffreCreateComponent },
 
-  // Gestion des transactions
   { path: 'transactions', component: TransactionListComponent },
   { path: 'transactions/create', component: TransactionCreateComponent },
-  { path: 'transactions/history', component: TransactionHistoryComponent }, // Historique des transactions
+  { path: 'transactions/history', component: TransactionHistoryComponent },
 
 
   { path: '**', redirectTo: 'welcome' } 
