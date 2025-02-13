@@ -1,1 +1,11 @@
+<div [ngSwitch]="currentRoute">
+    <app-navbar *ngSwitchCase="'/welcome'"></app-navbar>
+    <app-admin-navbar *ngSwitchDefault></app-admin-navbar>
+</div>
+
 <router-outlet />
+
+<div [ngSwitch]="currentRoute">
+    <app-footer *ngSwitchCase="'/welcome'"></app-footer>
+    <app-footer *ngSwitchDefault></app-footer>
+</div>

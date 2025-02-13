@@ -12,9 +12,9 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ClientApprouveComponent } from './components/clients/client-approuve/client-approuve.component';
 import { LandingPageComponent } from './components/guests/landing-page/landing-page.component';
 
+
 const routes: Routes = [
-  // Route pour la page d'accueil ou la page de présentation
-  { path: '', component: LandingPageComponent },
+  { path: 'welcome', component: LandingPageComponent },
 
   // Authentification (Connexion et Inscription)
   { path: 'login', component: LoginComponent },
@@ -37,9 +37,10 @@ const routes: Routes = [
   { path: 'transactions/create', component: TransactionCreateComponent },
   { path: 'transactions/history', component: TransactionHistoryComponent }, // Historique des transactions
 
-  // Redirection vers la page d'accueil si aucune route ne correspond
-  { path: '**', redirectTo: '' } // Fallback si aucune route ne correspond
+
+  { path: '**', redirectTo: 'welcome' } 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)], // Utilisation de forRoot pour les routes principales
