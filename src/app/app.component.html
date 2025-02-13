@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
@@ -332,5 +333,16 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+=======
+<div [ngSwitch]="currentRoute">
+    <app-navbar *ngSwitchCase="'/welcome'"></app-navbar>
+    <app-admin-navbar *ngSwitchDefault></app-admin-navbar>
+</div>
+>>>>>>> Stashed changes
 
 <router-outlet />
+
+<div [ngSwitch]="currentRoute">
+    <app-footer *ngSwitchCase="'/welcome'"></app-footer>
+    <app-footer *ngSwitchDefault></app-footer>
+</div>

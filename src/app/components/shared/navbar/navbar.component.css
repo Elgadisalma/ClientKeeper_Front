@@ -1,0 +1,13 @@
+.nav-link {
+    @apply text-blue-900 font-medium text-lg flex items-center space-x-2 
+           border-b-2 border-transparent transition-all duration-300;
+  }
+  
+  .nav-link:hover {
+    @apply border-blue-900 text-blue-500;
+  }
+  
+  .nav-link i {
+    @apply text-xl;
+  }
+  

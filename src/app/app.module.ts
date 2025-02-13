@@ -3,13 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< Updated upstream
 
 @NgModule({
   declarations: [
     AppComponent
+=======
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { AdminNavbarComponent } from './components/shared/admin-navbar/admin-navbar.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    AdminNavbarComponent
+>>>>>>> Stashed changes
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
+    NavbarComponent,
     AppRoutingModule
   ],
   providers: [],
