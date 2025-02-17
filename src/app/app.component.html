@@ -1,11 +1,18 @@
-<div [ngSwitch]="currentRoute">
-    <app-navbar *ngSwitchCase="'/welcome'"></app-navbar>
-    <app-admin-navbar *ngSwitchDefault></app-admin-navbar>
-</div>
-
-<router-outlet />
-
-<div [ngSwitch]="currentRoute">
-    <app-footer *ngSwitchCase="'/welcome'"></app-footer>
-    <app-footer *ngSwitchDefault></app-footer>
-</div>
+<!-- Navbar -->
+<div *ngIf="['/welcome', '/auth/login', '/auth/register'].includes(currentRoute)">
+    <app-navbar></app-navbar>
+  </div>
+  <!-- <div *ngIf="!['/welcome', '/login', '/register'].includes(currentRoute)">
+    <app-admin-navbar></app-admin-navbar>
+  </div> -->
+  
+  <router-outlet></router-outlet>
+  
+  <!-- Footer -->
+  <div *ngIf="currentRoute === '/welcome'">
+    <app-footer></app-footer>
+  </div>
+  <div *ngIf="currentRoute !== '/welcome'">
+    <app-footer></app-footer>
+  </div>
+  
