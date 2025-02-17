@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AdminNavbarComponent } from './components/shared/admin-navbar/admin-navbar.component';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AdminNavbarComponent } from './components/shared/admin-navbar/admin-nav
   imports: [
     BrowserModule,    
     NavbarComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

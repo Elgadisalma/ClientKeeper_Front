@@ -1,10 +1,10 @@
 <!-- Navbar -->
-<div *ngIf="['/welcome', '/login', '/register'].includes(currentRoute)">
+<div *ngIf="['/welcome', '/auth/login', '/auth/register'].includes(currentRoute)">
     <app-navbar></app-navbar>
   </div>
-  <div *ngIf="!['/welcome', '/login', '/register'].includes(currentRoute)">
+  <!-- <div *ngIf="!['/welcome', '/login', '/register'].includes(currentRoute)">
     <app-admin-navbar></app-admin-navbar>
-  </div>
+  </div> -->
   
   <router-outlet></router-outlet>
   
