@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from '../../components/auth/register/register.component';
 import { LoginComponent } from '../../components/auth/login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    FormsModule
   ]
 })
 export class AuthModule { }

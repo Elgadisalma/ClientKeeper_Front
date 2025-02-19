@@ -27,13 +27,13 @@
           <input type="date" [(ngModel)]="user.dateNaissance" name="dateNaissance" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
         </div>
         <div class="w-1/2">
-          <label class="text-gray-700 font-medium">Sexe <span class="text-red-500">*</span></label>
-          <select [(ngModel)]="user.sexe" name="sexe" class="w-full border-b-2 border-blue-700 bg-transparent outline-none focus:border-gray-400 p-1">
-            <option value="" disabled selected>Choisir</option>
-            <option value="M">Masculin</option>
-            <option value="F">Féminin</option>
-          </select>
-        </div>
+            <label class="text-gray-700 font-medium">Sexe <span class="text-red-500">*</span></label>
+            <select [(ngModel)]="user.sexe" name="sexe" class="w-full border-b-2 border-blue-700 bg-transparent outline-none focus:border-gray-400 p-1">
+              <option value="" disabled selected>Choisir</option>
+              <option value="HOMME">Masculin</option>
+              <option value="FEMME">Féminin</option>
+            </select>
+          </div>
       </div>
   
       <!-- Adresse -->
@@ -51,7 +51,7 @@
       <!-- Numéro de téléphone -->
       <div>
         <label class="text-gray-700 font-medium">Numéro de téléphone <span class="text-red-500">*</span></label>
-        <input type="text" [(ngModel)]="user.telephone" name="telephone" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
+        <input type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
       </div>
   
       <!-- Email -->
@@ -93,9 +93,9 @@
       </div>
   
       <!-- Bouton d'inscription -->
-      <button (click)="register()" class="mt-4 w-full bg-indigo-600 text-white py-2 font-bold rounded-sm hover:bg-indigo-400 transition">
+      <button (click)="validateAndRegister()" class="mt-4 w-full bg-indigo-600 text-white py-2 font-bold rounded-sm hover:bg-indigo-400 transition">
         S'inscrire
-      </button>
+      </button>      
   
       <!-- Lien pour se connecter -->
       <p class="text-center text-gray-900 text-lg">
