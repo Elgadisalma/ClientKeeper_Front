@@ -1,107 +1,335 @@
 <div class="mx-auto h-full flex w-full items-center justify-center bg-gray-200">
-    <section class="flex w-[40rem] flex-col space-y-4 p-8">
-      <div class="text-center text-gray-900 text-3xl font-semibold">S'inscrire</div>
-  
-      <!-- Nom & Prénom -->
-      <div class="flex space-x-4">
-        <div class="w-1/2">
-          <label class="text-gray-700 font-medium">Nom <span class="text-red-500">*</span></label>
-          <input type="text" [(ngModel)]="user.nom" name="nom" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-        </div>
-        <div class="w-1/2">
-          <label class="text-gray-700 font-medium">Prénom <span class="text-red-500">*</span></label>
-          <input type="text" [(ngModel)]="user.prenom" name="prenom" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-        </div>
+  <form
+    [formGroup]="registerForm"
+    class="flex w-[40rem] flex-col space-y-4 p-8"
+  >
+    <div class="text-center text-gray-900 text-3xl font-semibold">
+      S'inscrire
+    </div>
+
+    <!-- Nom & Prénom -->
+    <div class="flex space-x-4">
+      <div class="w-1/2">
+        <label class="text-gray-700 font-medium"
+          >Nom <span class="text-red-500">*</span></label
+        >
+        <input
+          type="text"
+          formControlName="nom"
+          class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+        />
+        <p
+          *ngIf="
+            registerForm.get('nom')?.invalid && registerForm.get('nom')?.touched
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Le nom est requis.
+        </p>
       </div>
-  
-      <!-- CIN -->
-      <div>
-        <label class="text-gray-700 font-medium">CIN <span class="text-red-500">*</span></label>
-        <input type="text" [(ngModel)]="user.cin" name="cin" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
+      <div class="w-1/2">
+        <label class="text-gray-700 font-medium"
+          >Prénom <span class="text-red-500">*</span></label
+        >
+        <input
+          type="text"
+          formControlName="prenom"
+          class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+        />
+        <p
+          *ngIf="
+            registerForm.get('prenom')?.invalid &&
+            registerForm.get('prenom')?.touched
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Le prénom est requis.
+        </p>
       </div>
-  
-      <!-- Date de naissance & Sexe -->
-      <div class="flex space-x-4">
-        <div class="w-1/2">
-          <label class="text-gray-700 font-medium">Date de naissance <span class="text-red-500">*</span></label>
-          <input type="date" [(ngModel)]="user.dateNaissance" name="dateNaissance" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-        </div>
-        <div class="w-1/2">
-            <label class="text-gray-700 font-medium">Sexe <span class="text-red-500">*</span></label>
-            <select [(ngModel)]="user.sexe" name="sexe" class="w-full border-b-2 border-blue-700 bg-transparent outline-none focus:border-gray-400 p-1">
-              <option value="" disabled selected>Choisir</option>
-              <option value="HOMME">Masculin</option>
-              <option value="FEMME">Féminin</option>
-            </select>
-          </div>
-      </div>
-  
-      <!-- Adresse -->
-      <div>
-        <label class="text-gray-700 font-medium">Adresse <span class="text-red-500">*</span></label>
-        <input type="text" [(ngModel)]="user.adresse" name="adresse" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-      </div>
-  
-      <!-- Profession -->
-      <div>
-        <label class="text-gray-700 font-medium">Profession <span class="text-red-500">*</span></label>
-        <input type="text" [(ngModel)]="user.profession" name="profession" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-      </div>
-  
-      <!-- Numéro de téléphone -->
-      <div>
-        <label class="text-gray-700 font-medium">Numéro de téléphone <span class="text-red-500">*</span></label>
-        <input type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-      </div>
-  
-      <!-- Email -->
-      <div>
-        <label class="text-gray-700 font-medium">Email <span class="text-red-500">*</span></label>
-        <input type="email" [(ngModel)]="user.email" name="email" class="w-full bg-transparent border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-      </div>
-  
-      <!-- Mot de passe -->
-      <div>
-        <label class="text-gray-700 font-medium">Mot de passe <span class="text-red-500">*</span></label>
-        <input type="password" [(ngModel)]="user.password" name="password" class="w-full bg-transparent border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-      </div>
-  
-      <!-- Secure Pin -->
-      <div>
-        <label class="text-gray-700 font-medium">Code de sécurité <span class="text-red-500">*</span></label>
-        <input type="text" [(ngModel)]="user.securePin" name="securePin" class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1">
-      </div>
-  
-      <div class="flex">
-        <div class="checkbox-wrapper">
-          <input checked type="checkbox" class="check" id="check1-61">
-          <label for="check1-61" class="label">
-            <svg width="45" height="45" viewBox="0 0 95 95">
-              <rect x="30" y="20" width="50" height="50" stroke="black" fill="none"></rect>
-              <g transform="translate(0,-952.36222)">
-                <path d="m 56,963 c -102,122 6,9 7,9 17,-5 -66,69 -38,52 122,-77 -7,14 18,4 29,-11 45,-43 23,-4" stroke="orange" stroke-width="3" fill="none" class="path1"></path>
-              </g>
-            </svg>
-          </label>
-        </div>
-        <span class="text-gray-700">
-          <span class="text-red-500">*</span>
-          En cochant cette case, vous acceptez nos 
-          <a href="#" class="text-indigo-500 underline">conditions d'utilisation</a> et notre 
-          <a href="#" class="text-indigo-500 underline">politique de confidentialité</a>.
-        </span>
-      </div>
-  
-      <!-- Bouton d'inscription -->
-      <button (click)="validateAndRegister()" class="mt-4 w-full bg-indigo-600 text-white py-2 font-bold rounded-sm hover:bg-indigo-400 transition">
-        S'inscrire
-      </button>      
-  
-      <!-- Lien pour se connecter -->
-      <p class="text-center text-gray-900 text-lg">
-        Déjà un compte ?
-        <a href="#" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Se connecter</a>
+    </div>
+
+    <!-- CIN -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >CIN <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="cin"
+        class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('cin')?.invalid && registerForm.get('cin')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <span *ngIf="registerForm.get('cin')?.hasError('required')"
+          >Le CIN est requis.</span
+        >
+        <span *ngIf="registerForm.get('cin')?.hasError('pattern')"
+          >Le CIN doit commencer par 2 lettres majuscules suivies de
+          chiffres.</span
+        >
       </p>
-    </section>
-  </div>
-  
+    </div>
+
+    <!-- Date de naissance & Sexe -->
+    <div class="flex space-x-4">
+      <div class="w-1/2">
+        <label class="text-gray-700 font-medium"
+          >Date de naissance <span class="text-red-500">*</span></label
+        >
+        <input
+          type="date"
+          formControlName="dateNaissance"
+          class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+        />
+        <p
+          *ngIf="
+            registerForm.get('dateNaissance')?.invalid &&
+            registerForm.get('dateNaissance')?.touched
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <span *ngIf="registerForm.get('dateNaissance')?.hasError('required')"
+            >La date de naissance est requise.</span
+          >
+          <span *ngIf="registerForm.get('dateNaissance')?.hasError('age')"
+            >Vous devez avoir au moins 18 ans.</span
+          >
+        </p>
+      </div>
+      <div class="w-1/2">
+        <label class="text-gray-700 font-medium"
+          >Sexe <span class="text-red-500">*</span></label
+        >
+        <select
+          formControlName="sexe"
+          class="w-full border-b-2 border-blue-700 bg-transparent outline-none focus:border-gray-400 p-1"
+        >
+          <option value="" disabled selected>Choisir</option>
+          <option value="HOMME">Masculin</option>
+          <option value="FEMME">Féminin</option>
+        </select>
+        <p
+          *ngIf="
+            registerForm.get('sexe')?.invalid &&
+            registerForm.get('sexe')?.touched
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          Le sexe est requis.
+        </p>
+      </div>
+    </div>
+
+    <!-- Adresse -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >Adresse <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="adresse"
+        class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('adresse')?.invalid &&
+          registerForm.get('adresse')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        L'adresse est requise.
+      </p>
+    </div>
+
+    <!-- Profession -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >Profession <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="profession"
+        class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('profession')?.invalid &&
+          registerForm.get('profession')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        La profession est requise.
+      </p>
+    </div>
+
+    <!-- Numéro de téléphone -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >Numéro de téléphone <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="phoneNumber"
+        class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('phoneNumber')?.invalid &&
+          registerForm.get('phoneNumber')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <span *ngIf="registerForm.get('phoneNumber')?.hasError('required')"
+          >Le numéro de téléphone est requis.</span
+        >
+        <span *ngIf="registerForm.get('phoneNumber')?.hasError('pattern')"
+          >Le numéro de téléphone doit contenir uniquement des chiffres.</span
+        >
+      </p>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >Email <span class="text-red-500">*</span></label
+      >
+      <input
+        type="email"
+        formControlName="email"
+        class="w-full bg-transparent border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <span *ngIf="registerForm.get('email')?.hasError('required')"
+          >L'email est requis.</span
+        >
+        <span *ngIf="registerForm.get('email')?.hasError('email')"
+          >Veuillez entrer une adresse email valide.</span
+        >
+      </p>
+    </div>
+
+    <!-- Mot de passe -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >Mot de passe <span class="text-red-500">*</span></label
+      >
+      <input
+        type="password"
+        formControlName="password"
+        class="w-full bg-transparent border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('password')?.invalid &&
+          registerForm.get('password')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <span *ngIf="registerForm.get('password')?.hasError('required')"
+          >Le mot de passe est requis.</span
+        >
+        <span *ngIf="registerForm.get('password')?.hasError('minlength')"
+          >Le mot de passe doit contenir au moins 6 caractères.</span
+        >
+      </p>
+    </div>
+
+    <!-- Secure Pin -->
+    <div>
+      <label class="text-gray-700 font-medium"
+        >Code de sécurité <span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        formControlName="securePin"
+        class="bg-transparent w-full border-b-2 border-blue-700 outline-none focus:border-gray-400 p-1"
+      />
+      <p
+        *ngIf="
+          registerForm.get('securePin')?.invalid &&
+          registerForm.get('securePin')?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <span *ngIf="registerForm.get('securePin')?.hasError('required')"
+          >Le code de sécurité est requis.</span
+        >
+        <span *ngIf="registerForm.get('securePin')?.hasError('pattern')"
+          >Le code de sécurité doit contenir entre 4 et 8 chiffres.</span
+        >
+      </p>
+    </div>
+
+    <!-- Checkbox pour les conditions d'utilisation -->
+    <div class="flex">
+      <div class="checkbox-wrapper">
+        <input
+          type="checkbox"
+          id="check1-61"
+          formControlName="terms"
+          class="check"
+        />
+        <label for="check1-61" class="label">
+          <svg width="45" height="45" viewBox="0 0 95 95">
+            <rect
+              x="30"
+              y="20"
+              width="50"
+              height="50"
+              stroke="black"
+              fill="none"
+            ></rect>
+            <g transform="translate(0,-952.36222)">
+              <path
+                d="m 56,963 c -102,122 6,9 7,9 17,-5 -66,69 -38,52 122,-77 -7,14 18,4 29,-11 45,-43 23,-4"
+                stroke="orange"
+                stroke-width="3"
+                fill="none"
+                class="path1"
+              ></path>
+            </g>
+          </svg>
+        </label>
+      </div>
+      <span class="text-gray-700">
+        <span class="text-red-500">*</span>
+        En cochant cette case, vous acceptez nos
+        <a href="#" class="text-indigo-500 underline"
+          >conditions d'utilisation</a
+        >
+        et notre
+        <a href="#" class="text-indigo-500 underline"
+          >politique de confidentialité</a
+        >.
+      </span>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="registerForm.invalid"
+      (click)="register()"
+      class="mt-4 w-full bg-indigo-600 text-white py-2 font-bold rounded-sm hover:bg-indigo-400 transition"
+    >
+      S'inscrire
+    </button>
+    <!-- Lien pour se connecter -->
+    <p class="text-center text-gray-900 text-lg">
+      Déjà un compte ?
+      <a
+        href="#"
+        class="font-medium text-indigo-500 underline-offset-4 hover:underline"
+        >Se connecter</a
+      >
+    </p>
+  </form>
+</div>
