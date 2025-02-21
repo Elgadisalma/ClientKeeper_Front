@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './admin-navbar.component.css'
 })
 export class AdminNavbarComponent {
+  isSidebarOpen = false;
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 }

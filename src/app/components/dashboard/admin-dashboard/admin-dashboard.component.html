@@ -1,1 +1,76 @@
-<p>admin-dashboard works!</p>
+<div class="ml-0 md:ml-60 pt-16 min-h-screen overflow-auto">
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl p-6 md:p-8 mb-5">
+          <h1 class="text-2xl md:text-3xl font-bold mb-6 md:mb-10">
+            Messaging ID framework development for the marketing branch
+          </h1>
+  
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="text-gray-400 text-xs text-center">
+                Members<br>connected
+              </div>
+              <div class="h-full border-l border-gray-300 mx-2"></div>
+              <div class="flex -space-x-2">
+                <img class="w-9 h-9 rounded-full object-cover" src="https://ui-avatars.com/api/?background=random">
+                <img class="w-9 h-9 rounded-full object-cover" src="https://ui-avatars.com/api/?background=random">
+              </div>
+            </div>
+  
+            <div class="flex items-center gap-2">
+              <button class="h-9 px-3 rounded-xl border hover:border-gray-400 text-gray-800 hover:text-gray-900 transition">
+                💬
+              </button>
+              <button class="h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
+                Open
+              </button>
+            </div>
+          </div>
+  
+          <hr class="my-6 md:my-10">
+  
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold mb-4">Users</h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full border-collapse">
+                <thead>
+                  <tr class="bg-gray-100 text-gray-600 uppercase text-xs md:text-sm leading-normal">
+                    <th class="py-3 px-4 text-left">Nom & Prénom</th>
+                    <th class="py-3 px-4 text-left">CIN</th>
+                    <th class="py-3 px-4 text-left">Date Naissance</th>
+                    <th class="py-3 px-4 text-left">Adresse</th>
+                    <th class="py-3 px-4 text-left">Profession</th>
+                    <th class="py-3 px-4 text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-900 font-light">
+                  <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-50">
+                    <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
+                    <td class="py-3 px-4 text-left">{{ user.cin }}</td>
+                    <td class="py-3 px-4 text-left">{{ user.dateNaissance }}</td>
+                    <td class="py-3 px-4 text-left">{{ user.adresse }}</td>
+                    <td class="py-3 px-4 text-left">{{ user.profession }}</td>
+                    <td class="py-3 px-4 text-center flex justify-center gap-2">
+                      <button (click)="approveUser(user)" class="bg-green-500 hover:bg-green-600 text-white w-9 h-9 flex items-center justify-center rounded-full transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path d="M13.485 1.929a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06L6 8.439l6.939-6.94a.75.75 0 0 1 1.06 0z"/>
+                          </svg>
+                      </button>
+                      <button (click)="deleteUser(user)" class="bg-red-500 hover:bg-red-600 text-white w-9 h-9 flex items-center justify-center rounded-full transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.146a.5.5 0 0 1 .708 0L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854a.5.5 0 0 1 0-.708z"/>
+                          </svg>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
