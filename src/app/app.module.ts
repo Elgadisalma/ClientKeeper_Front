@@ -6,6 +6,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AdminNavbarComponent } from './components/shared/admin-navbar/admin-navbar.component';
 import { AuthModule } from './modules/auth/auth.module';
+import { provideHttpClient } from '@angular/common/http';   
+
 
 @NgModule({
   declarations: [
@@ -17,9 +19,11 @@ import { AuthModule } from './modules/auth/auth.module';
     BrowserModule,    
     NavbarComponent,
     AppRoutingModule,
-    AuthModule
+    AuthModule  
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

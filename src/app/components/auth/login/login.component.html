@@ -1,35 +1,61 @@
 <div
-  class="mx-auto flex w-full items-center justify-center bg-gray-200 text-white" style="height: 75vh;"
+  class="mx-auto flex w-full items-center justify-center bg-gray-200 text-white"
+  style="height: 75vh"
 >
   <!-- component -->
-  <section class="flex w-[30rem] flex-col space-y-10">
-    <!-- <div class="text-center text-black text-4xl font-medium">Log In</div> -->
-
+  <!-- <section class="flex w-[30rem] flex-col space-y-10"> -->
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogin()"
+    class="flex w-[30rem] flex-col space-y-10"
+  >
     <div
       class="w-full transform border-b-2 bg-transparent text-lg duration-300 border-orange-500 focus-within:border-blue-600"
     >
       <input
         type="email"
+        formControlName="email"
         placeholder="Email "
         class="w-full text-blue-900 border-none bg-transparent outline-none placeholder:italic focus:outline-none"
       />
     </div>
+    <p
+      *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+      class="text-red-500"
+    >
+      Email invalide
+    </p>
 
     <div
-    class="w-full transform border-b-2 bg-transparent text-lg duration-300 border-orange-500 focus-within:border-blue-600"
+      class="w-full transform border-b-2 bg-transparent text-lg duration-300 border-orange-500 focus-within:border-blue-600"
     >
       <input
         type="password"
+        formControlName="password"
         placeholder="Password"
-        class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
+        class="w-full border-none text-blue-800 bg-transparent outline-none placeholder:italic focus:outline-none"
       />
     </div>
+    <p
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+      class="text-red-500"
+    >
+      Le mot de passe doit contenir au moins 6 caractères
+    </p>
 
     <button
+      type="submit"
       class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 text-black hover:bg-indigo-400"
     >
       Se Connecter
     </button>
+
+    <!-- Message d'erreur -->
+    <p *ngIf="errorMessage" class="text-red-500 text-center">
+      {{ errorMessage }}
+    </p>
 
     <a
       href="#"
@@ -45,5 +71,6 @@
         >Create One</a
       >
     </p>
-  </section>
+  </form>
+  <!-- </section> -->
 </div>
