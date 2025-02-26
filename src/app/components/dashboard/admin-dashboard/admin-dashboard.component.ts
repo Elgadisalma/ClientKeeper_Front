@@ -1,77 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/users/user.service';  
+import { User } from '../../../models/user'
 
 @Component({
   selector: 'app-admin-dashboard',
-  standalone: false,
   templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css'
+  styleUrl: './admin-dashboard.component.css',
+  standalone: false
 })
-export class AdminDashboardComponent {
+export class AdminDashboardComponent implements OnInit {
+  users: User[] = [];
 
-  users = [
-    {
-      nom: 'Test',
-      prenom: 'Receiver',
-      cin: '123',
-      dateNaissance: '1990-05-15',
-      adresse: '123 Rue Principale, Paris, France',
-      profession: 'Ingénieur logiciel',
-      sexe: 'HOMME',
-    },
-    {
-      nom: 'Doe',
-      prenom: 'John',
-      cin: '456',
-      dateNaissance: '1985-08-22',
-      adresse: '456 Avenue Centrale, Lyon, France',
-      profession: 'Médecin',
-      sexe: 'HOMME',
-    },
-    {
-      nom: 'Doe',
-      prenom: 'John',
-      cin: '456',
-      dateNaissance: '1985-08-22',
-      adresse: '456 Avenue Centrale, Lyon, France',
-      profession: 'Médecin',
-      sexe: 'HOMME',
-    },
-    {
-      nom: 'Doe',
-      prenom: 'John',
-      cin: '456',
-      dateNaissance: '1985-08-22',
-      adresse: '456 Avenue Centrale, Lyon, France',
-      profession: 'Médecin',
-      sexe: 'HOMME',
-    },
-    {
-      nom: 'Doe',
-      prenom: 'John',
-      cin: '456',
-      dateNaissance: '1985-08-22',
-      adresse: '456 Avenue Centrale, Lyon, France',
-      profession: 'Médecin',
-      sexe: 'HOMME',
-    },
-    {
-      nom: 'Doe',
-      prenom: 'John',
-      cin: '456',
-      dateNaissance: '1985-08-22',
-      adresse: '456 Avenue Centrale, Lyon, France',
-      profession: 'Médecin',
-      sexe: 'HOMME',
-    },
-  ];
+  constructor(private userService: UserService) {}
 
-  approveUser(user: any) {
-    console.log('Utilisateur approuvé:', user);
-    // Logique pour approuver l'utilisateur
+  ngOnInit(): void {
+    this.loadUsers();
   }
 
-  deleteUser(user: any) {
-    console.log('Utilisateur supprimé:', user);
-    this.users = this.users.filter(u => u.cin !== user.cin);
+  loadUsers(): void {
+    this.userService.getUsers().subscribe(
+      (data) => {
+        this.users = data;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des utilisateurs', error);
+      }
+    );
   }
+
+  approveUser(user: User) {
+    if (!user.numeroCompte || user.numeroCompte.trim() === '' || user.numeroCompte.trim() === 'F1') {
+      alert("Veiullez ajouter le numéro de compte !");
+      return;
+    }
+
+    this.userService.approveUser(user.id, user.numeroCompte)
+      .subscribe({
+        next: () => {
+          alert("Utilisateur approuvé avec succès !");
+          this.loadUsers();
+        },
+      });
+  }
+
+  deleteUser(user: User) {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer ${user.nom} ${user.prenom} ?`)) {
+      this.userService.deleteUser(user.id).subscribe({
+        next: () => {
+          alert("Utilisateur supprimé avec succès !");
+          this.loadUsers();
+        },
+      });
+    }
+  }
+  
+  
 }
