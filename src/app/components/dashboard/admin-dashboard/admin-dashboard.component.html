@@ -41,27 +41,33 @@
                     <th class="py-3 px-4 text-left">Date Naissance</th>
                     <th class="py-3 px-4 text-left">Adresse</th>
                     <th class="py-3 px-4 text-left">Profession</th>
+                    <th class="py-3 px-4 text-left">Numéro Compte</th>
                     <th class="py-3 px-4 text-center">Actions</th>
                   </tr>
                 </thead>
                 <tbody class="text-gray-900 font-light">
-                  <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-50">
-                    <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
-                    <td class="py-3 px-4 text-left">{{ user.cin }}</td>
-                    <td class="py-3 px-4 text-left">{{ user.dateNaissance }}</td>
-                    <td class="py-3 px-4 text-left">{{ user.adresse }}</td>
-                    <td class="py-3 px-4 text-left">{{ user.profession }}</td>
-                    <td class="py-3 px-4 text-center flex justify-center gap-2">
-                      <button (click)="approveUser(user)" class="bg-green-500 hover:bg-green-600 text-white w-9 h-9 flex items-center justify-center rounded-full transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-check-lg" viewBox="0 0 16 16">
-                            <path d="M13.485 1.929a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06L6 8.439l6.939-6.94a.75.75 0 0 1 1.06 0z"/>
-                          </svg>
-                      </button>
-                      <button (click)="deleteUser(user)" class="bg-red-500 hover:bg-red-600 text-white w-9 h-9 flex items-center justify-center rounded-full transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path d="M2.146 2.146a.5.5 0 0 1 .708 0L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                      </button>
+                    <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-50">
+                        <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
+                        <td class="py-3 px-4 text-left">{{ user.cin }}</td>
+                        <td class="py-3 px-4 text-left">{{ user.dateNaissance }}</td>
+                        <td class="py-3 px-4 text-left">{{ user.adresse }}</td>
+                        <td class="py-3 px-4 text-left">{{ user.profession }}</td>
+                        <td class="py-3 px-4 text-left">
+                          <input [(ngModel)]="user.numeroCompte" class="border p-1 rounded w-full" />
+                        </td>
+                        <td class="py-3 px-4 text-center flex justify-center gap-2">
+                          <button (click)="approveUser(user)" class="bg-green-500 hover:bg-green-600 text-white w-9 h-9 pt-1 flex items-center justify-center rounded-lg transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">
+                              <path d="M13.485 1.929a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06L6 8.439l6.939-6.94a.75.75 0 0 1 1.06 0z"/>
+                            </svg>
+                          </button>
+                          <button (click)="deleteUser(user)" class="bg-red-500 hover:bg-red-600 text-white w-9 h-9 flex items-center justify-center rounded-lg transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-x-lg" viewBox="0 0 16 16">
+                              <path d="M2.146 2.146a.5.5 0 0 1 .708 0L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                          </button>
+                          
+                          
                     </td>
                   </tr>
                 </tbody>

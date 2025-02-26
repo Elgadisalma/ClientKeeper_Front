@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/users/user.service';  
+import { User } from '../../../models/user'
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -8,7 +9,7 @@ import { UserService } from '../../../services/users/user.service';
   standalone: false
 })
 export class AdminDashboardComponent implements OnInit {
-  users: any[] = [];
+  users: User[] = [];
 
   constructor(private userService: UserService) {}
 
@@ -27,13 +28,31 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  approveUser(user: any) {
-    console.log('Utilisateur approuvé:', user);
-    // Logique pour approuver l'utilisateur
+  approveUser(user: User) {
+    if (!user.numeroCompte || user.numeroCompte.trim() === '' || user.numeroCompte.trim() === 'F1') {
+      alert("Veiullez ajouter le numéro de compte !");
+      return;
+    }
+
+    this.userService.approveUser(user.id, user.numeroCompte)
+      .subscribe({
+        next: () => {
+          alert("Utilisateur approuvé avec succès !");
+          this.loadUsers();
+        },
+      });
   }
 
-  deleteUser(user: any) {
-    console.log('Utilisateur supprimé:', user);
-    this.users = this.users.filter(u => u.cin !== user.cin);
+  deleteUser(user: User) {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer ${user.nom} ${user.prenom} ?`)) {
+      this.userService.deleteUser(user.id).subscribe({
+        next: () => {
+          alert("Utilisateur supprimé avec succès !");
+          this.loadUsers();
+        },
+      });
+    }
   }
+  
+  
 }

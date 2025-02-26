@@ -1,5 +1,5 @@
 export interface User {
-    id?: number;
+    id: number;
     nom: string;
     prenom: string;
     cin: string;
@@ -11,4 +11,5 @@ export interface User {
     email: string;
     password: string;
     securePin: string;
+    numeroCompte: string;
 }
