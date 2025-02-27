@@ -6,7 +6,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AdminNavbarComponent } from './components/shared/admin-navbar/admin-navbar.component';
 import { AuthModule } from './modules/auth/auth.module';
-import { provideHttpClient } from '@angular/common/http';   
+import { provideHttpClient } from '@angular/common/http';
 
 
 @NgModule({

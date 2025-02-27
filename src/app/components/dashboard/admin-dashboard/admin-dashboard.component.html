@@ -30,31 +30,31 @@
   
           <hr class="my-6 md:my-10">
   
-          <div>
-            <h2 class="text-xl md:text-2xl font-bold mb-4">Users</h2>
-            <div class="overflow-x-auto">
-              <table class="min-w-full border-collapse">
-                <thead>
-                  <tr class="bg-gray-100 text-gray-600 uppercase text-xs md:text-sm leading-normal">
-                    <th class="py-3 px-4 text-left">Nom & Prénom</th>
-                    <th class="py-3 px-4 text-left">CIN</th>
-                    <th class="py-3 px-4 text-left">Date Naissance</th>
-                    <th class="py-3 px-4 text-left">Adresse</th>
-                    <th class="py-3 px-4 text-left">Profession</th>
-                    <th class="py-3 px-4 text-left">Numéro Compte</th>
-                    <th class="py-3 px-4 text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody class="text-gray-900 font-light">
-                    <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-50">
-                        <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
-                        <td class="py-3 px-4 text-left">{{ user.cin }}</td>
-                        <td class="py-3 px-4 text-left">{{ user.dateNaissance }}</td>
-                        <td class="py-3 px-4 text-left">{{ user.adresse }}</td>
-                        <td class="py-3 px-4 text-left">{{ user.profession }}</td>
-                        <td class="py-3 px-4 text-left">
-                          <input [(ngModel)]="user.numeroCompte" class="border p-1 rounded w-full" />
-                        </td>
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold mb-4">Users</h2>
+              <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse">
+                  <thead>
+                    <tr class="bg-gray-100 text-gray-600 uppercase text-xs md:text-sm leading-normal">
+                      <th class="py-3 px-4 text-left">Nom & Prénom</th>
+                      <th class="py-3 px-4 text-left">CIN</th>
+                      <th class="py-3 px-4 text-left">Date Naissance</th>
+                      <th class="py-3 px-4 text-left">Adresse</th>
+                      <th class="py-3 px-4 text-left">Profession</th>
+                      <th class="py-3 px-4 text-left">Numéro Compte</th>
+                      <th class="py-3 px-4 text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-900 font-light">
+                      <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-50">
+                          <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
+                          <td class="py-3 px-4 text-left">{{ user.cin }}</td>
+                          <td class="py-3 px-4 text-left">{{ user.dateNaissance }}</td>
+                          <td class="py-3 px-4 text-left">{{ user.adresse }}</td>
+                          <td class="py-3 px-4 text-left">{{ user.profession }}</td>
+                          <td class="py-3 px-4 text-left">
+                            <input [(ngModel)]="user.numeroCompte" class="border p-1 rounded w-full" />
+                          </td>
                         <td class="py-3 px-4 text-center flex justify-center gap-2">
                           <button (click)="approveUser(user)" class="bg-green-500 hover:bg-green-600 text-white w-9 h-9 pt-1 flex items-center justify-center rounded-lg transition">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">

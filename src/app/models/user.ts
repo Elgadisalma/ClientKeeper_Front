@@ -12,4 +12,5 @@ export interface User {
     password: string;
     securePin: string;
     numeroCompte: string;
+    churn_score?: number;
 }
