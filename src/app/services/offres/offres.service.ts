@@ -46,7 +46,8 @@ export class OffresService {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-
+  
     return this.http.delete(`${this.apiUrl}/${id}`, { headers });
   }
+  
 }

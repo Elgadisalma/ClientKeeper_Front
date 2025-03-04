@@ -70,4 +70,25 @@ export class OffreCreateComponent implements OnInit {
       error: (error) => console.error('Erreur lors de la mise à jour de l\'offre', error)
     });
   }
+
+  deleteOffre(offre: Offre): void {
+    if (offre.id === undefined) {
+      console.error('id indefini');
+      return; 
+    }
+  
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette offre ?')) {
+      this.offresService.deleteOffre(offre.id).subscribe({
+        next: () => {
+          this.offres = this.offres.filter(o => o.id !== offre.id);
+        },
+        error: (error) => {
+          console.error('Erreur lors de la suppression de l\'offre', error);
+        }
+      });
+    }
+  }
+  
+  
+  
 }
