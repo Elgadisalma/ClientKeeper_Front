@@ -1,7 +1,7 @@
 export interface Offre {
-    id?: number;
+    id?: number; 
     taux: number;
-    dateCreation?: string;
     dateExpiration: string;
     description: string;
+    dateCreation?: string;  
 }

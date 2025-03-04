@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Offre {
-  taux: number;
-  dateExpiration: string;
-  description: string;
-}
+import { Offre } from "../../models/offre";  // Importing the interface
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +19,7 @@ export class OffresService {
   
     return this.http.get<Offre[]>(this.apiUrl, { headers });
   }
-  
+
   addOffre(offre: Offre): Observable<Offre> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -33,5 +28,25 @@ export class OffresService {
     });
   
     return this.http.post<Offre>(this.apiUrl, offre, { headers });
-  }  
+  }
+
+  updateOffre(offre: Offre): Observable<Offre> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+  
+    return this.http.put<Offre>(`${this.apiUrl}/${offre.id}`, offre, { headers });
+  }
+
+  deleteOffre(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers });
+  }
 }

@@ -1,9 +1,10 @@
 <div class="w-full">
-  <img src="assets/Capture d’écran 2025-03-03 112016.png" alt="Image" class="w-full h-72" />
+  <img src="assets/Capture d’écran 2025-03-03 112016.png" alt="Image" class="w-full h-72"/>
 </div>
-<div class="flex min-h-screen  m-12 justify-center">
+
+<div class="flex min-h-screen m-12 justify-center">
   <div class="mx-auto w-full max-w-[55rem]">
-    <!-- Formulaire d'ajout -->
+
     <form (ngSubmit)="addOffre()">
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3 sm:w-1/2">
@@ -20,7 +21,9 @@
         </div>
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
-            <label class="mb-3 block text-base font-medium text-[#07074D]">Date Expiration</label>
+            <label class="mb-3 block text-base font-medium text-[#07074D]"
+              >Date Expiration</label
+            >
             <input
               type="date"
               [(ngModel)]="newOffre.dateExpiration"
@@ -33,7 +36,9 @@
       </div>
 
       <div class="mb-5">
-        <label class="mb-3 block text-base font-medium text-[#07074D]">Description</label>
+        <label class="mb-3 block text-base font-medium text-[#07074D]"
+          >Description</label
+        >
         <input
           type="text"
           [(ngModel)]="newOffre.description"
@@ -53,26 +58,33 @@
       </div>
     </form>
 
-     <!-- Liste des offres -->
-     <div class="pt-20 w-full">
+    <!-- Liste des offres -->
+    <div class="pt-20 w-full">
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Offres Disponibles</h2>
-    
+
       <div class="flex flex-wrap justify-center gap-6">
-        <div *ngFor="let offre of offres" class="bg-white w-96 rounded-xl shadow-lg p-6 border flex flex-col justify-between">
+        <div
+          *ngFor="let offre of offres"
+          class="bg-white w-96 rounded-xl shadow-lg p-6 border flex flex-col justify-between"
+        >
           <div class="flex flex-col gap-3">
             <!-- Taux -->
             <div class="flex items-center">
-              <label class="text-sm font-semibold text-gray-700 w-1/3">Taux % :</label>
+              <label class="text-sm font-semibold text-gray-700 w-1/3"
+                >Taux % :</label
+              >
               <input
                 type="number"
                 [(ngModel)]="offre.taux"
                 class="w-1/3 bg-transparent text-gray-800 outline-none"
               />
             </div>
-    
+
             <!-- Description -->
             <div class="flex items-center">
-              <label class="text-sm font-semibold text-gray-700 w-1/3">Description :</label>
+              <label class="text-sm font-semibold text-gray-700 w-1/3"
+                >Description :</label
+              >
               <input
                 type="text"
                 [(ngModel)]="offre.description"
@@ -80,7 +92,7 @@
               />
             </div>
 
-            <!-- Date de creation -->
+            <!-- Date de création -->
             <div class="flex items-center">
               <label class="text-sm font-semibold text-gray-700 w-1/3">Création :</label>
               <input
@@ -90,7 +102,7 @@
                 readonly
               />
             </div>
-    
+
             <!-- Date d'expiration -->
             <div class="flex items-center">
               <label class="text-sm font-semibold text-gray-700 w-1/3">Expiration :</label>
@@ -101,19 +113,26 @@
               />
             </div>
           </div>
-    
-          <!-- Boutons -->
+
+
           <div class="flex mt-4 w-full">
-            <button class="w-1/2 bg-[#438eb1] font-bold text-white py-2 border-r-2 rounded-l-md hover:bg-[#7897a5] hover:text-black">
+            <button
+              (click)="updateOffre(offre)"
+              class="w-1/2 bg-[#438eb1] font-bold text-white py-2 border-r-2 rounded-l-md hover:bg-[#7897a5] hover:text-black"
+            >
               Modifier
             </button>
-            <button class="w-1/2 bg-[#fb923c] text-white py-2 hover:bg-[#c2a791] hover:text-black font-bold rounded-r-md">
+
+            <!-- <button
+              *ngIf="offre.id !== undefined"
+              (click)="deleteOffre(offre.id)"
+              class="w-1/2 bg-[#fb923c] text-white py-2 hover:bg-[#c2a791] hover:text-black font-bold rounded-r-md"
+            >
               Supprimer
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
     </div>
-    
-</div>
+  </div>
 </div>
