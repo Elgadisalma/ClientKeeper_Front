@@ -10,8 +10,8 @@ import { Offre } from '../../../models/offre';
 })
 
 export class OffreCreateComponent implements OnInit {
-  offres: Offre[] = [];  // Using the imported `Offre` interface
-  newOffre: Offre = { taux: 0, dateExpiration: '', description: '' };  // Using the imported `Offre` interface
+  offres: Offre[] = [];
+  newOffre: Offre = { taux: 0, dateExpiration: '', description: '' };
   isLoading: boolean = false;
 
   constructor(private offresService: OffresService) {}
@@ -40,8 +40,21 @@ export class OffreCreateComponent implements OnInit {
       return;
     }
 
+    // Validation des dates
     if (!this.isDateExpirationValid(this.newOffre.dateExpiration)) {
       alert('La date d\'expiration doit être après aujourd\'hui.');
+      return;
+    }
+
+    // Validation du taux
+    if (this.newOffre.taux < 1 || this.newOffre.taux > 99) {
+      alert('Le taux doit être compris entre 1 et 99.');
+      return;
+    }
+
+    // Validation de la description
+    if (this.newOffre.description.length < 20) {
+      alert('La description doit contenir au moins 20 caractères.');
       return;
     }
 
@@ -60,6 +73,24 @@ export class OffreCreateComponent implements OnInit {
   }
 
   updateOffre(offre: Offre): void {
+    // Validation des dates
+    if (!this.isDateExpirationValid(offre.dateExpiration)) {
+      alert('La date d\'expiration doit être après aujourd\'hui.');
+      return;
+    }
+
+    // Validation du taux
+    if (offre.taux < 1 || offre.taux > 99) {
+      alert('Le taux doit être compris entre 1 et 99.');
+      return;
+    }
+
+    // Validation de la description
+    if (offre.description.length < 20) {
+      alert('La description doit contenir au moins 20 caractères.');
+      return;
+    }
+
     this.offresService.updateOffre(offre).subscribe({
       next: (updatedOffre) => {
         const index = this.offres.findIndex(o => o.id === updatedOffre.id);
@@ -88,7 +119,4 @@ export class OffreCreateComponent implements OnInit {
       });
     }
   }
-  
-  
-  
 }

@@ -5,7 +5,7 @@
 <div class="flex min-h-screen m-12 justify-center">
   <div class="mx-auto w-full max-w-[55rem]">
 
-    <form (ngSubmit)="addOffre()">
+    <form (ngSubmit)="addOffre()" #offreForm="ngForm">
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
@@ -16,47 +16,65 @@
               name="taux"
               class="w-full rounded-md border border-[#6A64F1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#ff9848] focus:shadow-md"
               required
+              [min]="1"
+              [max]="99"
+              #taux="ngModel"
             />
+            <div *ngIf="taux.invalid && taux.touched" class="text-red-500 text-sm">
+              <div *ngIf="taux.errors?.required">Le taux est obligatoire.</div>
+              <div *ngIf="taux.errors?.min || taux.errors?.max">Le taux doit être entre 1 et 99.</div>
+            </div>
           </div>
         </div>
+    
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
-            <label class="mb-3 block text-base font-medium text-[#07074D]"
-              >Date Expiration</label
-            >
+            <label class="mb-3 block text-base font-medium text-[#07074D]">Date Expiration</label>
             <input
               type="date"
               [(ngModel)]="newOffre.dateExpiration"
               name="dateExpiration"
               class="w-full rounded-md border border-[#6A64F1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#ff9848] focus:shadow-md"
               required
+              #dateExpiration="ngModel"
             />
+            <div *ngIf="dateExpiration.invalid && dateExpiration.touched" class="text-red-500 text-sm">
+              <div *ngIf="dateExpiration.errors?.required">La date d'expiration est obligatoire.</div>
+              <div *ngIf="dateExpiration.errors?.invalidDate">La date d'expiration doit être après aujourd'hui.</div>
+            </div>
           </div>
         </div>
       </div>
-
+    
       <div class="mb-5">
-        <label class="mb-3 block text-base font-medium text-[#07074D]"
-          >Description</label
-        >
+        <label class="mb-3 block text-base font-medium text-[#07074D]">Description</label>
         <input
           type="text"
           [(ngModel)]="newOffre.description"
           name="description"
           class="w-full appearance-none rounded-md border border-[#6A64F1] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#ff9848] focus:shadow-md"
           required
+          minlength="20"
+          #description="ngModel"
         />
+        <div *ngIf="description.invalid && description.touched" class="text-red-500 text-sm">
+          <div *ngIf="description.errors?.required">La description est obligatoire.</div>
+          <div *ngIf="description.errors?.minlength">La description doit contenir au moins 20 caractères.</div>
+        </div>
       </div>
-
+    
       <div>
         <button
           type="submit"
           class="rounded-md bg-[#6A64F1] hover:bg-[#a39fed] py-3 w-full text-center text-base text-black font-bold outline-none"
+          [disabled]="offreForm.invalid"
         >
           Ajouter l'offre
         </button>
       </div>
     </form>
+    
+    
 
     <!-- Liste des offres -->
     <div class="pt-20 w-full">
