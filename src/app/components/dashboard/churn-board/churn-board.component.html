@@ -47,6 +47,8 @@
                 <th class="py-3 px-4 text-left">Numéro Compte</th>
                 <th class="py-3 px-4 text-left">CIN</th>
                 <th class="py-3 px-4 text-left">Churn Score</th>
+                <th class="py-3 px-4 text-left">Offres</th>
+                <th class="py-3 px-4 text-left">Associer</th>
               </tr>
             </thead>
             <tbody class="text-gray-900 font-light">
@@ -54,9 +56,39 @@
                 <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
                 <td class="py-3 px-4 text-left">{{ user.numeroCompte }}</td>
                 <td class="py-3 px-4 text-left">{{ user.cin }}</td>
-                <td class="py-3 px-4 text-left">{{ user.churn_score }}</td>
-               
+                <td class="py-3 px-4 text-left font-bold"
+                    [ngClass]="{
+                      'text-green-500': user.churn_score === 0,
+                      'text-orange-500': user.churn_score === 1,
+                      'text-red-500': user.churn_score === 2
+                    }">
+                  {{ user.churn_score }}
+                </td>  
+              
+                <td class="py-3 px-4 text-left font-bold">
+                  <select 
+                    class="px-4 py-2 border border-gray-300 bg-white text-gray-700 font-medium rounded-xl 
+                           focus:outline-none focus:ring-1 focus:ring-orange-400 focus:border-orange-400"
+                    [(ngModel)]="selectedOffre[user.id]"
+                  >
+                    <option *ngFor="let offre of offres" [value]="offre.id">
+                      {{ offre.taux }}%
+                    </option>
+                  </select>
+                </td>
+              
+                <td class="py-3 px-4 text-left">
+                  <button 
+                    class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded 
+                           transition duration-300 ease-in-out"
+                    (click)="associerOffre(user.id, selectedOffre[user.id])"
+                  >
+                    Associer
+                  </button>
+                </td>
               </tr>
+              
+              
             </tbody>
           </table>
         </div>

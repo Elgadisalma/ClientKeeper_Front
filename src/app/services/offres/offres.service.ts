@@ -49,5 +49,18 @@ export class OffresService {
   
     return this.http.delete(`${this.apiUrl}/${id}`, { headers });
   }
+
+  associateOffreToClient(clientId: number, offreId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+  
+    const body = { clientId, offreId };
+    return this.http.post('http://localhost:8080/api/clients/associate', body, { headers, responseType: 'text' });
+  }
+  
+  
   
 }
