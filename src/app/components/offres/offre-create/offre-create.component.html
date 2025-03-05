@@ -21,8 +21,8 @@
               #taux="ngModel"
             />
             <div *ngIf="taux.invalid && taux.touched" class="text-red-500 text-sm">
-              <div *ngIf="taux.errors?.required">Le taux est obligatoire.</div>
-              <div *ngIf="taux.errors?.min || taux.errors?.max">Le taux doit être entre 1 et 99.</div>
+              <div *ngIf="taux.errors?.['required']">Le taux est obligatoire.</div>
+              <div *ngIf="taux.errors?.['min'] || taux.errors?.['max']">Le taux doit être entre 1 et 99.</div>
             </div>
           </div>
         </div>
@@ -39,8 +39,8 @@
               #dateExpiration="ngModel"
             />
             <div *ngIf="dateExpiration.invalid && dateExpiration.touched" class="text-red-500 text-sm">
-              <div *ngIf="dateExpiration.errors?.required">La date d'expiration est obligatoire.</div>
-              <div *ngIf="dateExpiration.errors?.invalidDate">La date d'expiration doit être après aujourd'hui.</div>
+              <div *ngIf="dateExpiration.errors?.['required']">La date d'expiration est obligatoire.</div>
+              <div *ngIf="dateExpiration.errors?.['invalidDate']">La date d'expiration doit être après aujourd'hui.</div>
             </div>
           </div>
         </div>
@@ -58,8 +58,8 @@
           #description="ngModel"
         />
         <div *ngIf="description.invalid && description.touched" class="text-red-500 text-sm">
-          <div *ngIf="description.errors?.required">La description est obligatoire.</div>
-          <div *ngIf="description.errors?.minlength">La description doit contenir au moins 20 caractères.</div>
+          <div *ngIf="description.errors?.['required']">La description est obligatoire.</div>
+          <div *ngIf="description.errors?.['minlength']">La description doit contenir au moins 20 caractères.</div>
         </div>
       </div>
     
