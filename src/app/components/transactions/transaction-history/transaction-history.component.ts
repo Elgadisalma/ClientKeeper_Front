@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-transaction-history',
   standalone: false,
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './transaction-history.component.css'
 })
 export class TransactionHistoryComponent {
-
+  
 }
