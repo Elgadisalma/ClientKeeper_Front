@@ -4,15 +4,17 @@ import { TransactionHistoryComponent } from '../../components/transactions/trans
 import { TransactionCreateComponent } from '../../components/transactions/transaction-create/transaction-create.component';
 import { TransactionListComponent } from '../../components/transactions/transaction-list/transaction-list.component';
 import { TransactionsRoutingModule } from './transactions-routing.module';
+import { ClientNavbarComponent } from "../../components/shared/client-navbar/client-navbar.component";
 
 @NgModule({
   declarations: [
     TransactionHistoryComponent,
     TransactionCreateComponent,
     TransactionListComponent,
+    ClientNavbarComponent
   ],
   imports: [CommonModule,
-            TransactionsRoutingModule
+            TransactionsRoutingModule,
             ],
 })
 export class TransactionsModule {}
