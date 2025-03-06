@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../../guards/auth.guard';
 import { TransactionHistoryComponent } from '../../components/transactions/transaction-history/transaction-history.component';
 import { TransactionCreateComponent } from '../../components/transactions/transaction-create/transaction-create.component';
 import { TransactionListComponent } from '../../components/transactions/transaction-list/transaction-list.component';
-import { TransactionsRoutingModule } from './transactions-routing.module';
+
+
+const routes: Routes = [
+  { path: 'home', component: TransactionHistoryComponent },
+];
 
 @NgModule({
-  declarations: [
-    TransactionHistoryComponent,
-    TransactionCreateComponent,
-    TransactionListComponent,
-  ],
-  imports: [CommonModule,
-            TransactionsRoutingModule
-            ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class TransactionsModule {}
+export class TransactionsRoutingModule { }

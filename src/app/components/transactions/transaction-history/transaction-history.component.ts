@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './transaction-history.component.css'
 })
 export class TransactionHistoryComponent {
+  showBalance = false;
 
+  toggleBalance() {
+    this.showBalance = !this.showBalance;
+  }
 }
