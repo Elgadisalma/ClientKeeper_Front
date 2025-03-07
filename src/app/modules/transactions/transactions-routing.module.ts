@@ -7,10 +7,10 @@ import { TransactionListComponent } from '../../components/transactions/transact
 
 
 const routes: Routes = [
-  { path: 'history', component: TransactionHistoryComponent },
-  { path: 'create', component: TransactionCreateComponent },
+  { path: 'history', component: TransactionListComponent },
+  // { path: 'create', component: TransactionCreateComponent },
   { path: 'profile', component: TransactionHistoryComponent },
-  { path: '', component: TransactionListComponent },
+  { path: '', component: TransactionCreateComponent },
 ];
 
 @NgModule({
