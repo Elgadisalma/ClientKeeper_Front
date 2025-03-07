@@ -5,6 +5,8 @@ import { TransactionCreateComponent } from '../../components/transactions/transa
 import { TransactionListComponent } from '../../components/transactions/transaction-list/transaction-list.component';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { ClientNavbarComponent } from "../../components/shared/client-navbar/client-navbar.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { ClientNavbarComponent } from "../../components/shared/client-navbar/cli
   ],
   imports: [CommonModule,
             TransactionsRoutingModule,
-            ],
+            ReactiveFormsModule,
+            FormsModule
+  ]
 })
 export class TransactionsModule {}

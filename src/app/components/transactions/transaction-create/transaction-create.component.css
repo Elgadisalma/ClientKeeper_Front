@@ -1,0 +1,33 @@
+.input-style {
+    width: 100%;
+    padding: 8px;
+    border-bottom: 2px solid #143D60;
+    outline: none;
+    background: transparent;
+  }
+  
+  .input-style:focus {
+    border-color: gray;
+  }
+  
+  .error-msg {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    background-color: #F97316;
+    color: white;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .btn-submit:hover {
+    transform: scale(1.05);
+  }
+  
