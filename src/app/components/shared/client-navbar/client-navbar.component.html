@@ -6,16 +6,20 @@
     <div class="text-white text-2xl cursor-pointer">☰</div>
 </nav>
 
-<!-- Contenu principal -->
 <div class="text-center pt-10 min-h-screen bg-gray-200">
-    <h1 class="text-orange-500 text-2xl font-bold">Bonjour Mme Elgadi Salma !</h1>
+    <h1 class="text-orange-500 text-2xl font-bold">
+        Bonjour 
+        <ng-container *ngIf="userData?.sexe === 'FEMME'">Mme</ng-container>
+        <ng-container *ngIf="userData?.sexe === 'HOMME'">Mr</ng-container> 
+        {{ userData?.prenom }} {{ userData?.nom }} !
+      </h1>
     <hr class="border-orange-500 w-3/4 mx-auto my-4">
     <p class="text-[#143D60] text-lg font-semibold">Votre numéro de compte :</p>
-    <p class="text-orange-500 text-lg font-semibold">ER123456789</p>
+    <p class="text-orange-500 text-lg font-semibold">{{ userData?.numeroCompte }}</p>
     
     <div class="mt-4 flex items-center justify-center gap-2">
         <span *ngIf="showBalance; else hiddenBalance" class="text-[#143D60] text-2xl font-bold">
-            10 002 DH
+            {{ userData?.solde }} DH
         </span>
         <ng-template #hiddenBalance>
             <span class="text-[#143D60] text-2xl font-bold">

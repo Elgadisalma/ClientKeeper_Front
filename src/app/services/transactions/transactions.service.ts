@@ -13,5 +13,13 @@ export class TransactionsService {
 
 
   createTransaction(transaction: any): Observable<any> {
-    return this.http.post(this.apiUrl, transaction);
-  }}
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+  
+    return this.http.post(this.apiUrl, transaction, { headers, responseType: 'text' });
+  }
+
+}
