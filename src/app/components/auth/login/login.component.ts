@@ -30,12 +30,20 @@ export class LoginComponent {
       this.errorMessage = 'Veuillez remplir tous les champs correctement.';
       return;
     }
-
+  
     const { email, password } = this.loginForm.value;
-    
+  
     this.authService.login(email, password).subscribe({
-      next: () => this.router.navigate(['/admin/dashboard']),
+      next: () => {
+        const role = localStorage.getItem('role');
+        if (role === 'ROLE_CLIENT') {
+          this.router.navigate(['/transactions']);
+        } else {
+          this.router.navigate(['/admin/dashboard']); 
+        }
+      },
       error: () => this.errorMessage = 'Identifiants incorrects !'
     });
   }
+  
 }

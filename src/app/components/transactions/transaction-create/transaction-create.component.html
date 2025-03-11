@@ -1,1 +1,74 @@
-<p>transaction-create works!</p>
+<app-client-navbar>
+  <div class="mx-4 sm:mx-10 mt-8 rounded-2xl border-2 border-[#143D60] overflow-hidden">
+    <form [formGroup]="transactionForm" (ngSubmit)="openSecurePinModal()" class="flex flex-col space-y-4 p-8 bg-white shadow-md rounded-xl">
+      <div class="text-center text-gray-900 text-2xl font-semibold">Créer une Transaction</div>
+
+      <div class="flex space-x-4">
+        <div class="w-1/3">
+          <label class="text-gray-700 font-medium">Nom du Destinataire <span class="text-red-600">*</span></label>
+          <input type="text" formControlName="receiverName" class="input-style" />
+        </div>
+        <div class="w-1/3">
+          <label class="text-gray-700 font-medium">Prénom du Destinataire <span class="text-red-600">*</span></label>
+          <input type="text" formControlName="receiverPrenom" class="input-style" />
+        </div>
+        <div class="w-1/3">
+          <label class="text-gray-700 font-medium">Montant (DH) <span class="text-red-600">*</span></label>
+          <input type="number" formControlName="montant" class="input-style" />
+        </div>
+      </div>
+
+      <div class="flex space-x-4">
+        <div class="w-1/2">
+          <label class="text-gray-700 font-medium">Numéro de compte <span class="text-red-600">*</span></label>
+          <input type="text" formControlName="receiverAccountNumber" class="input-style" />
+        </div>
+        <div class="w-1/2">
+          <label class="text-gray-700 font-medium">Motif <span class="text-red-600">*</span></label>
+          <input formControlName="motif" class="input-style" />
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="transactionForm.invalid" class="btn-submit">Valider la Transaction</button>
+    </form>
+  </div>
+
+ <!-- Pop-up Secure PIN -->
+<div *ngIf="isSecurePinModalOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-[500px] text-center">
+    <img src="assets/logo - Copie.png" alt="Logo" class="mx-auto mb-6 w-16" />
+    
+    <h2 class="text-2xl font-bold mb-6 text-[#143D60] font-quetine">Entrez votre code Pin de sécurité</h2>
+
+    <input type="password" [(ngModel)]="securePin" maxlength="4" class="input-style text-center border-2 border-[#143D60] rounded-lg py-3 mb-6" placeholder="****" />
+
+    <div class="flex justify-between mt-6">
+      <button (click)="confirmTransaction()" class="text-white bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-6 py-3 text-center">
+        Confirmer
+      </button>
+      <button (click)="isSecurePinModalOpen = false" class="py-3 px-6 ms-3 text-sm font-medium text-blue-600 focus:outline-none bg-gray-300 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-gray-100">
+        Annuler
+      </button>
+    </div>
+    
+    <p *ngIf="transactionError" class="error-msg mt-4 text-red-500">{{ transactionError }}</p>
+  </div>
+</div>
+
+<!-- Pop-up Transaction Status -->
+<div *ngIf="transactionStatus" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-[500px] text-center">
+    <div *ngIf="transactionStatus === 'success'">
+      <img src="assets/green-check-icon.png" alt="Success" class="mx-auto mb-6 w-16" />
+      <h3 class="text-xl font-semibold text-green-600">Transaction effectuée avec succès !</h3>
+    </div>
+    
+    <div *ngIf="transactionStatus === 'failed'">
+      <img src="assets/red-failed-icon.png" alt="Failed" class="mx-auto mb-6 w-16" />
+      <h3 class="text-xl font-semibold text-red-600">Erreur lors de la transaction. Veuillez réessayer.</h3>
+    </div>
+  </div>
+</div>
+
+
+</app-client-navbar>
