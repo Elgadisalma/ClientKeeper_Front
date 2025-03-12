@@ -1,0 +1,38 @@
+/* Style général de la section profil */
+.profile-container {
+    background-color: #f4f4f4; /* Gris clair pour le fond */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style pour chaque élément d'information du profil */
+  .profile-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.1rem; /* Taille de police pour les labels */
+  }
+  
+  /* Labels des informations de profil */
+  .profile-label {
+    font-weight: bold;
+    color: #143D60; /* Couleur principale du texte */
+  }
+  
+  /* Valeurs des informations de profil */
+  .profile-value {
+    font-weight: normal;
+    color: #555; /* Couleur plus claire pour les valeurs */
+    text-align: right;
+  }
+  
+  /* Message sous les informations */
+  .profile-info-message {
+    display: block;
+    font-size: 0.9rem;
+    color: #999;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,87 @@
+<app-client-navbar>
+    <div class="mx-4 sm:mx-10 mt-8 p-8 rounded-2xl border-2 border-[#143D60] bg-white shadow-lg">
+  
+      <!-- Profil Informations -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  
+        <!-- Nom et Prénom -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-user-circle text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Nom et Prénom :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.nom }} {{ userData?.prenom }}</p>
+        </div>
+  
+        <!-- Email -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-envelope text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Email :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.email }}</p>
+        </div>
+  
+        <!-- Profession -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-briefcase text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Profession :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.profession }}</p>
+        </div>
+  
+        <!-- Date de naissance -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-birthday-cake text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Date de naissance :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.dateNaissance | date:'dd MMM yyyy' }}</p>
+        </div>
+  
+        <!-- Adresse -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-home text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Adresse :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.adresse }}</p>
+        </div>
+  
+        <!-- Numéro de téléphone -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-phone text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Numéro de téléphone :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.phoneNumber }}</p>
+        </div>
+  
+        <!-- CIN -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-id-card text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">CIN :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.cin }}</p>
+        </div>
+  
+        <!-- Sexe -->
+        <div class="flex flex-col bg-[#eaf2f8] p-5 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-venus-mars text-orange-500 text-lg"></i>
+            <p class="text-md text-[#143D60] font-bold">Sexe :</p>
+          </div>
+          <p class="text-base font-medium text-[#143D60] ml-6">{{ userData?.sexe }}</p>
+        </div>
+  
+      </div>
+  
+      <!-- Message sous les informations -->
+      <div class="mt-6 text-center text-md text-[#143D60]">
+        <span>Si vous voulez modifier l'un de ces infos, veuillez aller à l'agence la plus proche de vous.</span>
+      </div>
+    </div>
+  </app-client-navbar>
+  
