@@ -28,6 +28,6 @@
   }
   
   .btn-submit:hover {
-    transform: scale(1.05);
+    background-color: #d76b1f;
   }
   
