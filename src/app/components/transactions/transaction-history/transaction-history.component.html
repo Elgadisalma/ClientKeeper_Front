@@ -1,3 +1,29 @@
 <app-client-navbar>
-
-<h1>test</h1>
+    <div class="mx-4 sm:mx-10 mt-8 p-4 rounded-2xl border-2 border-[#143D60] bg-white shadow-lg">
+      <h1 class="text-2xl font-bold text-[#143D60] mb-4">Historique des Transactions</h1>
+  
+      <div *ngFor="let date of transactionDates" class="mt-6">
+        <h2 class="text-lg font-bold text-[#143D60]">{{ date }}</h2>
+  
+        <div *ngFor="let transaction of groupedTransactions[date]" class="bg-white p-4 rounded-lg shadow-md mt-2">
+          
+          <div class="transaction-box bg-gray-200">
+            <span *ngIf="transaction.typeTransaction === 'emise'" >
+              Virement émis en faveur de {{ transaction.receiverName }} {{ transaction.receiverPrenom }}
+            </span>
+  
+            <span *ngIf="transaction.typeTransaction === 'recue'" >
+              Virement reçu de {{ transaction.receiverName }} {{ transaction.receiverPrenom }}
+            </span>
+  
+            <!-- Montant aligné à droite -->
+            <span class="transaction-amount" [ngClass]="{'text-green-500': transaction.typeTransaction === 'recue', 'text-orange-500': transaction.typeTransaction === 'emise'}">
+              {{ transaction.montant }} DH
+            </span>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </app-client-navbar>
+  

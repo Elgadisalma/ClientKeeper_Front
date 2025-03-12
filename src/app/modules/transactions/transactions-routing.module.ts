@@ -7,7 +7,7 @@ import { TransactionListComponent } from '../../components/transactions/transact
 
 
 const routes: Routes = [
-  { path: 'history', component: TransactionListComponent , canActivate: [AuthGuard]},
+  { path: 'history', component: TransactionHistoryComponent , canActivate: [AuthGuard]},
   // { path: 'create', component: TransactionCreateComponent },
   { path: 'profile', component: TransactionHistoryComponent , canActivate: [AuthGuard] },
   { path: '', component: TransactionCreateComponent, canActivate: [AuthGuard] },

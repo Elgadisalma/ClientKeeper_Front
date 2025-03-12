@@ -6,4 +6,6 @@ export interface Transaction {
     montant: number,
     motif: string,
     securePin: string
+    dateTransaction: string; 
+    typeTransaction: 'emise' | 'recue';
 }
