@@ -31,5 +31,15 @@ export class TransactionsService {
   
     return this.http.get<Transaction[]>(`${this.apiUrl}/history`, { headers });
   }
+
+  getAllTransactions(): Observable<Transaction[]> {
+    const token = localStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` 
+    });
+    
+  
+    return this.http.get<Transaction[]>(`http://localhost:8080/api/clients/all`, { headers });
+  }
   
 }

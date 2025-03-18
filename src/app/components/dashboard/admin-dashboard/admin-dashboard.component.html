@@ -46,6 +46,11 @@
                     </tr>
                   </thead>
                   <tbody class="text-gray-900 font-light">
+                    <tr *ngIf="users.length === 0" class="text-center pt-12">
+                      <td colspan="7" class="py-3 px-4 text-lg font-semibold text-gray-500">
+                        Aucun utilisateur en attente de confirmation.
+                      </td>
+                    </tr>
                       <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-50">
                           <td class="py-3 px-4 text-left font-semibold">{{ user.nom }} {{ user.prenom }}</td>
                           <td class="py-3 px-4 text-left">{{ user.cin }}</td>
