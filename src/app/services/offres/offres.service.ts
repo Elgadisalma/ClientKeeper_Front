@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Offre } from "../../models/offre";  // Importing the interface
+import { Offre } from "../../models/offre";  
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +60,5 @@ export class OffresService {
     const body = { clientId, offreId };
     return this.http.post('http://localhost:8080/api/clients/associate', body, { headers, responseType: 'text' });
   }
-  
-  
   
 }

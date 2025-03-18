@@ -7,6 +7,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { AdminNavbarComponent } from './components/shared/admin-navbar/admin-navbar.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { provideHttpClient } from '@angular/common/http';
+import { NotAuthorizedComponent } from './components/shared/not-authorized/not-authorized.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { provideHttpClient } from '@angular/common/http';
     BrowserModule,    
     NavbarComponent,
     AppRoutingModule,
+    NotAuthorizedComponent,
     AuthModule  
   ],
   providers: [

@@ -47,5 +47,4 @@ export class UserService {
     return this.http.delete<any>(`http://localhost:8080/api/clients/delete/${userId}`, { headers });
   }
   
-  
 }
