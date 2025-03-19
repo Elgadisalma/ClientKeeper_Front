@@ -1,11 +1,44 @@
-<section id="home" class="text-center py-20 bg-gray-200">
-  <h1 class="text-4xl font-bold text-blue-900">Bienvenue chez ClientKeeper</h1>
-  <p class="mt-4 text-lg text-gray-700">
-    Simplifiez vos transactions et gérez votre compte facilement, à tout moment.
-  </p>
-  <img
-    src="assets/world-class-resource-center.jpg"
-    alt="Happy Customers"
-    class="mx-auto mt-8 w-3/4 md:w-1/2 rounded-lg"
-  />
+<section id="home" class="relative text-center py-24 bg-gradient-to-r from-[#143D60] to-[#FF7A00]">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/world-class-resource-center.jpg'); opacity: 0.2;"></div>
+  
+  <div class="flex flex-col-reverse md:flex-row items-center justify-center relative z-10 px-6 md:px-16 space-y-6 md:space-y-0">
+    <!-- Text Section -->
+    <div class="text-center md:text-left max-w-lg md:max-w-md mx-auto">
+      <!-- Main Heading -->
+      <h1 class="text-4xl md:text-5xl font-medium text-white leading-tight tracking-wide mb-10">
+        Bienvenue chez <span class="text-orange-500">ClientKeeper</span>
+      </h1>
+    
+      <!-- Subheading -->
+      <p class="text-lg md:text-2xl text-white mb-8 leading-tight font-light mb-4">
+        Simplifiez vos transactions et gérez votre compte facilement, à tout moment.
+      </p>
+
+      <!-- Call-to-Action Button -->
+      <a href="/" class="inline-block bg-[#143D60] text-white text-lg py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-600">
+        Découvrez nos services
+      </a>
+
+      <!-- Decorative Lines -->
+      <div class="my-8 flex pl-2 items-center space-x-4">
+        <div class="w-16 h-1 bg-orange-500"></div>
+        <div class="w-16 h-1 bg-white"></div>
+        <div class="w-16 h-1 bg-orange-500"></div>
+      </div>
+    </div>
+
+    <!-- Image Section with Parallax Effect -->
+    <div class="relative mt-16 mx-auto w-full max-w-md md:max-w-lg group">
+      <div class="relative overflow-hidden rounded-3xl shadow-2xl">
+        <!-- Parallax Effect -->
+        <img
+          src="assets/freepik__the-style-is-candid-image-photography-with-natural__52360.png"
+          alt="Happy Customers"
+          class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700 ease-in-out rounded-3xl"
+        />
+      </div>
+      <div class="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
 </section>

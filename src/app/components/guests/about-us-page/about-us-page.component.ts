@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about-us-page',
-  standalone: false,
+  standalone: true,
   templateUrl: './about-us-page.component.html',
   styleUrl: './about-us-page.component.css'
 })

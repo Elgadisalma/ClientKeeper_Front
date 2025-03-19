@@ -18,8 +18,8 @@ export class AppComponent {
         filter((event) => event instanceof NavigationEnd)
       )
       .subscribe((event: NavigationEnd) => {
-        // Met à jour la route actuelle
-        this.currentRoute = event.url;  // La route actuelle après navigation
+        // Normaliser l'URL pour éviter les problèmes
+        this.currentRoute = event.urlAfterRedirects.split('?')[0]; 
       });
   }
 }
