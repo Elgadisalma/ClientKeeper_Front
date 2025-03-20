@@ -22,7 +22,10 @@
   <aside [ngClass]="{ 'translate-x-0': isSidebarOpen, '-translate-x-full': !isSidebarOpen }"
   class="fixed inset-y-0 left-0 w-60 bg-white shadow-md transform transition-transform duration-300 md:translate-x-0 z-50">
   <div class="flex flex-col h-full">
-    <div class="px-4 py-6 text-center border-b">
+    <div class="px-4 py-6 text-center border-b flex">
+      <button *ngIf="isSidebarOpen" (click)="toggleSidebar()">
+        <i class="fas fa-times text-gray-500"></i>
+      </button>
       <img src="assets/logo.png" alt="Logo" class="w-24 md:w-40 mx-auto" />
     </div>
 
