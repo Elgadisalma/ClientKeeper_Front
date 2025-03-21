@@ -50,6 +50,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe({
       next: (response) => {
         console.log('Inscription réussie', response);
+        window.alert('Inscription réussie ! Veuillez attendre quelques jours pour analyser vos données.');
       },
       error: (error) => {
         console.error('Erreur lors de l\'inscription', error);

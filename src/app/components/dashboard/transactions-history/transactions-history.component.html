@@ -26,6 +26,11 @@
                         </tr>
                     </thead>
                     <tbody class="text-gray-900 font-light">
+                        <tr *ngIf="transactions.length === 0" class="text-center pt-12">
+                            <td colspan="7" class="py-3 px-4 text-lg font-semibold text-gray-500">
+                              Aucune transaction effectuée.
+                            </td>
+                          </tr>
                         <tr *ngFor="let transaction of transactions" class="border-b border-gray-200 hover:bg-gray-50">
                             <td class="py-3 px-4 text-left font-semibold">
                                 {{ transaction.senderName }} {{ transaction.senderPrenom }}

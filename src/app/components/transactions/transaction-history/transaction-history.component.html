@@ -1,7 +1,13 @@
 <app-client-navbar>
     <div class="mx-4 sm:mx-10 mt-8 p-4 rounded-2xl border-2 border-[#143D60] bg-white shadow-lg">
+      <div *ngIf="transactionDates.length === 0" class="text-center ">
+        <p class="py-3 px-4 text-lg font-semibold text-gray-500">
+          Aucune transaction effectuée.
+        </p>
+      </div>
   
       <div *ngFor="let date of transactionDates" class="mt-6">
+        
         <h2 class="text-lg font-bold text-[#143D60]">{{ date }}</h2>
   
         <div *ngFor="let transaction of groupedTransactions[date]" class="bg-white p-2 rounded-lg shadow-md mt-1">
@@ -12,7 +18,7 @@
             </span>
   
             <span *ngIf="transaction.typeTransaction === 'recue'" >
-              Virement reçu de {{ transaction.receiverName }} {{ transaction.receiverPrenom }}
+              Virement reçu de {{ transaction.senderName }} {{ transaction.senderPrenom }}
             </span>
   
             <!-- Montant aligné à droite -->

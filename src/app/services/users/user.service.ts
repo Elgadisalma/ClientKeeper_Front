@@ -27,14 +27,15 @@ export class UserService {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
-    
   
-    const body = JSON.stringify({ userId: userId, NumeroCompte: numeroCompte });
-  
-    console.log(body);
+    const body = {
+      userId: userId,
+      numeroCompte: numeroCompte
+    };
   
     return this.http.put<any>(this.approveUrl, body, { headers });
   }
+  
 
   deleteUser(userId: number): Observable<any> {
     const token = localStorage.getItem('token');
